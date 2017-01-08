@@ -1,5 +1,5 @@
-set(comp_srcs TrajectryPlannerTester.cpp )
-set(standalone_srcs TrajectryPlannerTesterComp.cpp)
+set(comp_srcs TrajectoryPlannerTester.cpp )
+set(standalone_srcs TrajectoryPlannerTesterComp.cpp)
 
 if (DEFINED OPENRTM_INCLUDE_DIRS)
   string(REGEX REPLACE "-I" ";"

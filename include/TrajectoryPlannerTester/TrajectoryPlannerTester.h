@@ -1,7 +1,7 @@
 // -*- C++ -*-
 /*!
- * @file  TrajectryPlannerTester.h
- * @brief Trajectry Planner Test Component 
+ * @file  TrajectoryPlannerTester.h
+ * @brief Trajectory Planner Test Component 
  * @date  $Date$
  *
  * $Id$
@@ -21,7 +21,7 @@
 
 // Service Consumer stub headers
 // <rtc-template block="consumer_stub_h">
-#include "TrajectryPlannerStub.h"
+#include "TrajectoryPlannerStub.h"
 
 // </rtc-template>
 
@@ -38,11 +38,11 @@
 using namespace RTC;
 
 /*!
- * @class TrajectryPlannerTester
- * @brief Trajectry Planner Test Component 
+ * @class TrajectoryPlannerTester
+ * @brief Trajectory Planner Test Component 
  *
  */
-class TrajectryPlannerTester
+class TrajectoryPlannerTester
   : public RTC::DataFlowComponentBase
 {
  public:
@@ -50,12 +50,12 @@ class TrajectryPlannerTester
    * @brief constructor
    * @param manager Maneger Object
    */
-  TrajectryPlannerTester(RTC::Manager* manager);
+  TrajectoryPlannerTester(RTC::Manager* manager);
 
   /*!
    * @brief destructor
    */
-  ~TrajectryPlannerTester();
+  ~TrajectoryPlannerTester();
 
   // <rtc-template block="public_attribute">
   
@@ -284,7 +284,7 @@ class TrajectryPlannerTester
 
 extern "C"
 {
-  DLL_EXPORT void TrajectryPlannerTesterInit(RTC::Manager* manager);
+  DLL_EXPORT void TrajectoryPlannerTesterInit(RTC::Manager* manager);
 };
 
 #endif // TRAJECTRYPLANNERTESTER_H

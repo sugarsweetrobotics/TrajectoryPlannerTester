@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /*!
- * @file TrajectryPlannerTesterComp.cpp
+ * @file TrajectoryPlannerTesterComp.cpp
  * @brief Standalone component
  * @date $Date$
  *
@@ -11,16 +11,16 @@
 #include <iostream>
 #include <string>
 #include <stdlib.h>
-#include "TrajectryPlannerTester.h"
+#include "TrajectoryPlannerTester.h"
 
 
 void MyModuleInit(RTC::Manager* manager)
 {
-  TrajectryPlannerTesterInit(manager);
+  TrajectoryPlannerTesterInit(manager);
   RTC::RtcBase* comp;
 
   // Create a component
-  comp = manager->createComponent("TrajectryPlannerTester");
+  comp = manager->createComponent("TrajectoryPlannerTester");
 
   if (comp==NULL)
   {

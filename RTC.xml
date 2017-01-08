@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<rtc:RtcProfile rtc:version="0.2" rtc:id="RTC:Sugar Sweet Robotics:MotionPlanning:TrajectryPlannerTester:1.0.0" xmlns:rtc="http://www.openrtp.org/namespaces/rtc" xmlns:rtcExt="http://www.openrtp.org/namespaces/rtc_ext" xmlns:rtcDoc="http://www.openrtp.org/namespaces/rtc_doc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <rtc:BasicInfo xsi:type="rtcExt:basic_info_ext" rtcExt:saveProject="TrajectryPlannerTester" rtc:updateDate="2017-01-07T09:16:12+09:00" rtc:creationDate="2017-01-07T09:14:59+09:00" rtc:version="1.0.0" rtc:vendor="Sugar Sweet Robotics" rtc:maxInstances="1" rtc:executionType="PeriodicExecutionContext" rtc:executionRate="1000.0" rtc:description="Trajectry Planner Test Component " rtc:category="MotionPlanning" rtc:componentKind="DataFlowComponent" rtc:activityType="PERIODIC" rtc:componentType="STATIC" rtc:name="TrajectryPlannerTester">
+<rtc:RtcProfile rtc:version="0.2" rtc:id="RTC:Sugar Sweet Robotics:MotionPlanning:TrajectoryPlannerTester:1.0.0" xmlns:rtc="http://www.openrtp.org/namespaces/rtc" xmlns:rtcExt="http://www.openrtp.org/namespaces/rtc_ext" xmlns:rtcDoc="http://www.openrtp.org/namespaces/rtc_doc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <rtc:BasicInfo xsi:type="rtcExt:basic_info_ext" rtcExt:saveProject="TrajectoryPlannerTester" rtc:updateDate="2017-01-07T09:16:12+09:00" rtc:creationDate="2017-01-07T09:14:59+09:00" rtc:version="1.0.0" rtc:vendor="Sugar Sweet Robotics" rtc:maxInstances="1" rtc:executionType="PeriodicExecutionContext" rtc:executionRate="1000.0" rtc:description="Trajectory Planner Test Component " rtc:category="MotionPlanning" rtc:componentKind="DataFlowComponent" rtc:activityType="PERIODIC" rtc:componentType="STATIC" rtc:name="TrajectoryPlannerTester">
         <rtcExt:VersionUpLogs></rtcExt:VersionUpLogs>
     </rtc:BasicInfo>
     <rtc:Actions>
@@ -25,7 +25,7 @@
         </rtc:Configuration>
     </rtc:ConfigurationSet>
     <rtc:ServicePorts xsi:type="rtcExt:serviceport_ext" rtcExt:position="LEFT" rtc:name="collision">
-        <rtc:ServiceInterface xsi:type="rtcExt:serviceinterface_ext" rtcExt:variableName="collisionDetectionService" rtc:path="/home/ysuga/idl/" rtc:type="Manipulation::CollisionDetectionService" rtc:idlFile="/home/ysuga/idl/TrajectryPlanner.idl" rtc:instanceName="Manipulation_CollisionDetectionService" rtc:direction="Required" rtc:name="Manipulation_CollisionDetectionService"/>
+        <rtc:ServiceInterface xsi:type="rtcExt:serviceinterface_ext" rtcExt:variableName="collisionDetectionService" rtc:path="/home/ysuga/idl/" rtc:type="Manipulation::CollisionDetectionService" rtc:idlFile="/home/ysuga/idl/TrajectoryPlanner.idl" rtc:instanceName="Manipulation_CollisionDetectionService" rtc:direction="Required" rtc:name="Manipulation_CollisionDetectionService"/>
     </rtc:ServicePorts>
     <rtc:Language xsi:type="rtcExt:language_ext" rtc:kind="C++"/>
 </rtc:RtcProfile>

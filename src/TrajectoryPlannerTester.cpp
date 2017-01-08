@@ -1,21 +1,21 @@
 // -*- C++ -*-
 /*!
- * @file  TrajectryPlannerTester.cpp
- * @brief Trajectry Planner Test Component 
+ * @file  TrajectoryPlannerTester.cpp
+ * @brief Trajectory Planner Test Component 
  * @date $Date$
  *
  * $Id$
  */
 
-#include "TrajectryPlannerTester.h"
+#include "TrajectoryPlannerTester.h"
 
 // Module specification
 // <rtc-template block="module_spec">
-static const char* trajectryplannertester_spec[] =
+static const char* trajectoryplannertester_spec[] =
   {
-    "implementation_id", "TrajectryPlannerTester",
-    "type_name",         "TrajectryPlannerTester",
-    "description",       "Trajectry Planner Test Component ",
+    "implementation_id", "TrajectoryPlannerTester",
+    "type_name",         "TrajectoryPlannerTester",
+    "description",       "Trajectory Planner Test Component ",
     "version",           "1.0.0",
     "vendor",            "Sugar Sweet Robotics",
     "category",          "MotionPlanning",
@@ -41,7 +41,7 @@ static const char* trajectryplannertester_spec[] =
  * @brief constructor
  * @param manager Maneger Object
  */
-TrajectryPlannerTester::TrajectryPlannerTester(RTC::Manager* manager)
+TrajectoryPlannerTester::TrajectoryPlannerTester(RTC::Manager* manager)
     // <rtc-template block="initializer">
   : RTC::DataFlowComponentBase(manager),
     m_collisionPort("collision")
@@ -53,13 +53,13 @@ TrajectryPlannerTester::TrajectryPlannerTester(RTC::Manager* manager)
 /*!
  * @brief destructor
  */
-TrajectryPlannerTester::~TrajectryPlannerTester()
+TrajectoryPlannerTester::~TrajectoryPlannerTester()
 {
 }
 
 
 
-RTC::ReturnCode_t TrajectryPlannerTester::onInitialize()
+RTC::ReturnCode_t TrajectoryPlannerTester::onInitialize()
 {
   // Registration: InPort/OutPort/Service
   // <rtc-template block="registration">
@@ -86,48 +86,48 @@ RTC::ReturnCode_t TrajectryPlannerTester::onInitialize()
 }
 
 /*
-RTC::ReturnCode_t TrajectryPlannerTester::onFinalize()
+RTC::ReturnCode_t TrajectoryPlannerTester::onFinalize()
 {
   return RTC::RTC_OK;
 }
 */
 
 /*
-RTC::ReturnCode_t TrajectryPlannerTester::onStartup(RTC::UniqueId ec_id)
+RTC::ReturnCode_t TrajectoryPlannerTester::onStartup(RTC::UniqueId ec_id)
 {
   return RTC::RTC_OK;
 }
 */
 
 /*
-RTC::ReturnCode_t TrajectryPlannerTester::onShutdown(RTC::UniqueId ec_id)
+RTC::ReturnCode_t TrajectoryPlannerTester::onShutdown(RTC::UniqueId ec_id)
 {
   return RTC::RTC_OK;
 }
 */
 
 /*
-RTC::ReturnCode_t TrajectryPlannerTester::onActivated(RTC::UniqueId ec_id)
+RTC::ReturnCode_t TrajectoryPlannerTester::onActivated(RTC::UniqueId ec_id)
 {
   return RTC::RTC_OK;
 }
 */
 
 /*
-RTC::ReturnCode_t TrajectryPlannerTester::onDeactivated(RTC::UniqueId ec_id)
+RTC::ReturnCode_t TrajectoryPlannerTester::onDeactivated(RTC::UniqueId ec_id)
 {
   return RTC::RTC_OK;
 }
 */
 
 
-RTC::ReturnCode_t TrajectryPlannerTester::onExecute(RTC::UniqueId ec_id)
+RTC::ReturnCode_t TrajectoryPlannerTester::onExecute(RTC::UniqueId ec_id)
 {
   std::string buffer;
-  std::cout << "[TrajectryPlannerTester] Input Command [collision]:" << std::ends;
+  std::cout << "[TrajectoryPlannerTester] Input Command [collision]:" << std::ends;
   std::cin >> buffer;
   if (buffer == "collision") {
-    std::cout << "[TrajectryPlannerTester] Start Collision Test." << std::endl;
+    std::cout << "[TrajectoryPlannerTester] Start Collision Test." << std::endl;
     
     Manipulation::RobotIdentifier manipInfo;
     manipInfo.name = CORBA::string_dup("orochi");
@@ -146,7 +146,7 @@ RTC::ReturnCode_t TrajectryPlannerTester::onExecute(RTC::UniqueId ec_id)
     jointSeq.jointInfoSeq[1].jointAngle = 1.0;
     Manipulation::CollisionInfo_var collision;
     bool collide = m_collisionDetectionService->isCollide(manipInfo, jointSeq, collision);
-    std::cout << "[TrajectryPlannerTester] collide = " << collide << std::endl;
+    std::cout << "[TrajectoryPlannerTester] collide = " << collide << std::endl;
     if (collide) {
       std::cout << " - collide with " << collision->name << std::endl;
     }
@@ -156,35 +156,35 @@ RTC::ReturnCode_t TrajectryPlannerTester::onExecute(RTC::UniqueId ec_id)
 
 
 /*
-RTC::ReturnCode_t TrajectryPlannerTester::onAborting(RTC::UniqueId ec_id)
+RTC::ReturnCode_t TrajectoryPlannerTester::onAborting(RTC::UniqueId ec_id)
 {
   return RTC::RTC_OK;
 }
 */
 
 /*
-RTC::ReturnCode_t TrajectryPlannerTester::onError(RTC::UniqueId ec_id)
+RTC::ReturnCode_t TrajectoryPlannerTester::onError(RTC::UniqueId ec_id)
 {
   return RTC::RTC_OK;
 }
 */
 
 /*
-RTC::ReturnCode_t TrajectryPlannerTester::onReset(RTC::UniqueId ec_id)
+RTC::ReturnCode_t TrajectoryPlannerTester::onReset(RTC::UniqueId ec_id)
 {
   return RTC::RTC_OK;
 }
 */
 
 /*
-RTC::ReturnCode_t TrajectryPlannerTester::onStateUpdate(RTC::UniqueId ec_id)
+RTC::ReturnCode_t TrajectoryPlannerTester::onStateUpdate(RTC::UniqueId ec_id)
 {
   return RTC::RTC_OK;
 }
 */
 
 /*
-RTC::ReturnCode_t TrajectryPlannerTester::onRateChanged(RTC::UniqueId ec_id)
+RTC::ReturnCode_t TrajectoryPlannerTester::onRateChanged(RTC::UniqueId ec_id)
 {
   return RTC::RTC_OK;
 }
@@ -195,12 +195,12 @@ RTC::ReturnCode_t TrajectryPlannerTester::onRateChanged(RTC::UniqueId ec_id)
 extern "C"
 {
  
-  void TrajectryPlannerTesterInit(RTC::Manager* manager)
+  void TrajectoryPlannerTesterInit(RTC::Manager* manager)
   {
-    coil::Properties profile(trajectryplannertester_spec);
+    coil::Properties profile(trajectoryplannertester_spec);
     manager->registerFactory(profile,
-                             RTC::Create<TrajectryPlannerTester>,
-                             RTC::Delete<TrajectryPlannerTester>);
+                             RTC::Create<TrajectoryPlannerTester>,
+                             RTC::Delete<TrajectoryPlannerTester>);
   }
   
 };

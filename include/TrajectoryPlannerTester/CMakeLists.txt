@@ -1,4 +1,4 @@
-set(hdrs TrajectryPlannerTester.h
+set(hdrs TrajectoryPlannerTester.h
     PARENT_SCOPE
     )
 
