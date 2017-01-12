@@ -129,26 +129,21 @@ RTC::ReturnCode_t TrajectoryPlannerTester::onExecute(RTC::UniqueId ec_id)
   if (buffer == "collision") {
     std::cout << "[TrajectoryPlannerTester] Start Collision Test." << std::endl;
     
-    Manipulation::RobotIdentifier manipInfo;
-    manipInfo.name = CORBA::string_dup("orochi");
-    Manipulation::RobotJointInfo jointSeq;
-    jointSeq.jointInfoSeq.length(7);
-    for(int i = 0;i < 7;i++) {      
-      jointSeq.jointInfoSeq[i].name = "";
-      jointSeq.jointInfoSeq[i].jointAngle = 0;
-      jointSeq.jointInfoSeq[i].jointDistance = 0;
-      jointSeq.jointInfoSeq[i].linkLength = 0;
-      jointSeq.jointInfoSeq[i].linkTwist = 0;
-      jointSeq.jointInfoSeq[i].maxAngle = 0;
-      jointSeq.jointInfoSeq[i].minAngle = 0;
+    Manipulation::RobotIdentifier robotID;
+    robotID.name = CORBA::string_dup("orochi");
+    
+    Manipulation::JointAngleSeq jointSeq;
+    jointSeq.length(7);
+    for(int i = 0;i < 7;i++) {
+      jointSeq[i].data = 0;
     }
-
-    jointSeq.jointInfoSeq[1].jointAngle = 1.0;
-    Manipulation::CollisionInfo_var collision;
-    bool collide = m_collisionDetectionService->isCollide(manipInfo, jointSeq, collision);
-    std::cout << "[TrajectoryPlannerTester] collide = " << collide << std::endl;
-    if (collide) {
-      std::cout << " - collide with " << collision->name << std::endl;
+    jointSeq[1].data = 1.0;
+    Manipulation::CollisionPairSeq_var collision;
+    Manipulation::ReturnValue_var retval = m_collisionDetectionService->isCollide(robotID, jointSeq, collision);
+    if (collision->length() > 0) {
+      std::cout << "[TrajectoryPlannerTester] collide" << std::endl;
+    } else {
+      std::cout << "[TrajectoryPlannerTester] no collision" << std::endl;
     }
   }
   return RTC::RTC_OK;
