@@ -44,7 +44,8 @@ static const char* trajectoryplannertester_spec[] =
 TrajectoryPlannerTester::TrajectoryPlannerTester(RTC::Manager* manager)
     // <rtc-template block="initializer">
   : RTC::DataFlowComponentBase(manager),
-    m_collisionPort("collision")
+    m_collisionPort("collision"),
+    m_kinematicsPort("kinematics")    
 
     // </rtc-template>
 {
@@ -71,9 +72,11 @@ RTC::ReturnCode_t TrajectoryPlannerTester::onInitialize()
   
   // Set service consumers to Ports
   m_collisionPort.registerConsumer("Manipulation_CollisionDetectionService", "Manipulation::CollisionDetectionService", m_collisionDetectionService);
+  m_kinematicsPort.registerConsumer("Manipulation_KinematicSolverService", "Manipulation::KinematicSolverService", m_kinematicsService);  
   
   // Set CORBA Service Ports
   addPort(m_collisionPort);
+  addPort(m_kinematicsPort);
   
   // </rtc-template>
 
@@ -124,7 +127,7 @@ RTC::ReturnCode_t TrajectoryPlannerTester::onDeactivated(RTC::UniqueId ec_id)
 RTC::ReturnCode_t TrajectoryPlannerTester::onExecute(RTC::UniqueId ec_id)
 {
   std::string buffer;
-  std::cout << "[TrajectoryPlannerTester] Input Command [collision]:" << std::ends;
+  std::cout << "[TrajectoryPlannerTester] Input Command [collision|kinematics]:" << std::ends;
   std::cin >> buffer;
   if (buffer == "collision") {
     std::cout << "[TrajectoryPlannerTester] Start Collision Test." << std::endl;
@@ -145,7 +148,39 @@ RTC::ReturnCode_t TrajectoryPlannerTester::onExecute(RTC::UniqueId ec_id)
     } else {
       std::cout << "[TrajectoryPlannerTester] no collision" << std::endl;
     }
+  }else if (buffer == "kinematics") {
+    std::cout << "[TrajectoryPlannerTester] Start Kinematics Test." << std::endl;
+
+    Manipulation::EndEffectorPose pose;
+    pose.pose.position.x = 0.08867;
+    pose.pose.position.y = -0.00525;
+    pose.pose.position.z = 0.720;
+    pose.pose.orientation.r = 0.1402;
+    pose.pose.orientation.p  =0.4442;
+    pose.pose.orientation.y = 0.2053;
+
+    Manipulation::JointAngleSeq startJoints;
+    startJoints.length(6);
+    startJoints[0].data = -0.261;
+    startJoints[1].data = -0.209;
+    startJoints[2].data = 1.047;
+    startJoints[3].data = 0.698;
+    startJoints[4].data = 0.698;
+    startJoints[5].data = -0.523;
+      
+    Manipulation::JointAngleSeq_var targetJoints;
+    Manipulation::ReturnValue_var retval = m_kinematicsService->solveKinematics(pose, startJoints, targetJoints);
+    if (retval->id == Manipulation::OK) {
+      std::cout << "[TrajectoryPlannerTester] Solved." << std::endl;
+      for(int i = 0;i < targetJoints->length();i++) {
+	std::cout << " - " << targetJoints[i].data << std::endl;
+      }
+    } else {
+      std::cout << "[TrajectoryPlannerTester] Error: " << (const char*)retval->message  << std::endl;
+    }
+    
   }
+  
   return RTC::RTC_OK;
 }
 

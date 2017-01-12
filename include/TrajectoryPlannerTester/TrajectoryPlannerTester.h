@@ -254,6 +254,7 @@ class TrajectoryPlannerTester
   /*!
    */
   RTC::CorbaPort m_collisionPort;
+  RTC::CorbaPort m_kinematicsPort;  
   
   // </rtc-template>
 
@@ -267,6 +268,7 @@ class TrajectoryPlannerTester
   /*!
    */
   RTC::CorbaConsumer<Manipulation::CollisionDetectionService> m_collisionDetectionService;
+  RTC::CorbaConsumer<Manipulation::KinematicSolverService> m_kinematicsService;  
   
   // </rtc-template>
 
